@@ -2,32 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+::-webkit-scrollbar {
+    display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.backgroundDiv {
+    /* Set background image */
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://img.freepik.com/free-photo/person-playing-3d-video-games-device_23-2151005751.jpg?t=st=1710738975~exp=1710742575~hmac=56f641ee21dd5e507cfd65a5313f970ae3d110025c011ef9ce698caed859d30f&w=740"); */
+    /* Cover the entire background */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../public/login.jpeg");
+    background-size: cover;
+    
+    /* Center the image */
+    background-position: center;
+    
+    /* Optional: Repeat the image to cover the entire background */
+    background-repeat: no-repeat;
+  
+    /* Set other styles as needed */
+    /* For example: */
+    width: 100%;
+    height: 100vh; /* Adjust height as needed */
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.signup {
+    /* Set background image */
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://img.freepik.com/free-photo/person-playing-3d-video-games-device_23-2151005751.jpg?t=st=1710738975~exp=1710742575~hmac=56f641ee21dd5e507cfd65a5313f970ae3d110025c011ef9ce698caed859d30f&w=740"); */
+    /* Cover the entire background */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../../public/signup.jpeg");
+    background-size: cover;
+    
+    /* Center the image */
+    background-position: center;
+    
+    /* Optional: Repeat the image to cover the entire background */
+    background-repeat: no-repeat;
+  
+    /* Set other styles as needed */
+    /* For example: */
+    width: 100%;
+    height: 100vh; /* Adjust height as needed */
   }
-}
+
+  .home-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url("../../public/signup.jpeg");
+    height: 100vh;
+    overflow-y: scroll;
+  }
