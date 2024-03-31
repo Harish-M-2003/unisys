@@ -38,9 +38,9 @@ export default function Page() {
     async function fetchMChatResponse() {
 
         setLoading(() => true)
-        const result = await axios.post("http://172.16.23.50:5000/ask", {
+        const result = await axios.post("http://172.16.21.79:5000/ask", {
             question: message,
-            email : "harishm.cse2021@gmail.com",
+            email : "keshavbaskarb.cse2021@citchennai.net",
         })
 
         setMChatMessage(() => result?.data.response);

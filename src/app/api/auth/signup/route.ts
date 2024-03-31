@@ -3,7 +3,7 @@ import {supabase} from "@/db/supabase-client";
 import bcrypt from "bcrypt";
 
 
-export async function POST(req : NextResponse){
+export async function POST(req : NextRequest){
 
     const {email , password} =  await req.json();
 

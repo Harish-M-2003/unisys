@@ -34,12 +34,6 @@ import { validateCredentials } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
 
-
-
-
-
-
-
 export default function SignUpForm() {
 
     const [error, setError] = useState(false);
