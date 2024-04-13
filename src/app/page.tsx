@@ -20,8 +20,24 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import LoginForm from '@/_components/login-form'
 
+import axios from "axios";
+
 
 export default function AuthenticationPage() {
+
+  const router = useRouter();
+
+  useEffect(() => {
+    async function checkAccess(){
+      const token_status = await axios.get("/api/validate_request");
+
+      if (token_status.data.valid === true){
+        router.push("/home")
+      }
+    }
+    checkAccess()
+  } , [])
+  
 
   return (
     <>

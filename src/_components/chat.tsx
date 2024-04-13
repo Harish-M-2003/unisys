@@ -10,6 +10,8 @@ import {
 import { TypewriterEffect, TypewriterEffectSmooth } from "./type-writer"
 // import Typewriter from 'typewriter-effect';
 import { TypeAnimation } from 'react-type-animation';
+import { Button } from "@/components/ui/button";
+import { Speaker } from "lucide-react";
 
 type ChatType = {
     message: string
@@ -21,6 +23,39 @@ type ChatType = {
 }
 
 export default function Chat({ profile, fallbackText, name, message, className, status }: ChatType) {
+
+//     let utterance : SpeechSynthesisUtterance;
+//     let synth : SpeechSynthesis;
+    
+//   function speak(message : string){
+
+//     const voices : SpeechSynthesisVoice[] = window.speechSynthesis.getVoices();
+
+//     console.log(voices);
+//   // Set the desired voice to a female voice
+//   const desiredVoice = voices.find(voice => voice.name.includes('female'));
+
+//   // If no female voice is found, use any available voice
+//   const selectedVoice = desiredVoice || voices[0];
+
+//   // Create a new SpeechSynthesisUtterance object
+//   const msg = new SpeechSynthesisUtterance();
+
+//   // Set the text to be spoken
+//   msg.text = 'Hello, I am speaking with a female voice.';
+
+//   // Set the desired voice for the utterance
+//   msg.voice = selectedVoice;
+
+//   // Speak the text
+//   window.speechSynthesis.speak(msg);
+
+//   }
+
+//   function stopSpeak(){
+//     synth.cancel();
+//   }
+
     return (
         <Card className="border-none mt-5 shadow-none w-screen" >
             <CardHeader className="">
@@ -46,6 +81,15 @@ export default function Chat({ profile, fallbackText, name, message, className, 
                     </Avatar>
                     }
                     <CardTitle>{name}</CardTitle>
+                    {/* {
+                        (name != "You")?
+                        <>
+                    <Button onClick={() => speak(message)}>Speak</Button>
+                    <Button onClick={() => stopSpeak()}>Stop</Button>
+                        </>
+                        :
+                        <></>
+                    } */}
                 </div>
                 <CardDescription className="text-wrap">{new Date().toDateString()}</CardDescription>
             </CardHeader>

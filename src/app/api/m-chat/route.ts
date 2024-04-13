@@ -4,7 +4,7 @@ export async function POST(req : NextRequest){
 
     const {message} = await req.json();
 
-    const content = await `
+    const content =  `
     Sure, here's a short story:
 
 Title: The Forgotten Symphony
@@ -29,6 +29,6 @@ From that day on, Sofia and Hector became unlikely companions, spending their da
 
 Soon`
 
-    return NextResponse.json({message : content})
+    return NextResponse.json({response : content})
 
 }
