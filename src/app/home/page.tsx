@@ -11,26 +11,30 @@ import { getValidToken } from "@/helper/jwtvalidator";
 import dynamic from 'next/dynamic'
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import NetworkStatus from "@/_components/network-status";
+import Cookies from "js-cookie";
+import Atropos from 'atropos/react';
+import 'atropos/css';
+import { SiMeta } from "react-icons/si";
 
 
-
-export  default  function Page() {
+export default function Page() {
 
   const router = useRouter();
 
   useEffect(() => {
-    async function checkAccess(){
+    async function checkAccess() {
       const token_status = await axios.get("/api/validate_request");
 
-      if (token_status.data.valid === false){
+      if (token_status.data.valid === false) {
         router.push("/")
       }
     }
     checkAccess()
-  } , [])
+  }, [])
 
   const products = [
-    
+
     {
       title: "Cursor",
       link: "#",
@@ -98,7 +102,7 @@ export  default  function Page() {
       thumbnail:
         "/game2.png",
     },
-    
+
 
     {
       title: "Editorially",
@@ -121,38 +125,78 @@ export  default  function Page() {
 
 
   ];
+
+  async function clearCookies() {
+    const response = await axios.get("/api/clear-cookies");
+    router.replace("/");
+  }
+
   return (
-    <div className="overflow-hidden dark:bg-[#0B0B0F] home-background w-full">
-      <HeroParallax products={products} />
-      <div className="mx-5 flex items-center gap-10 rounded-xl mx-20">
-        <video autoPlay muted loop className="h-[40rem] w-[40rem] rounded-xl">
-          <source src="/v1.mp4" type="video/mp4" className="rounded-xl" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="flex justify-center gap-5 items-center flex-col">
-          <p className="text-2xl text-white">
-            The goal of the game is to raise awareness on the possible negative effects caused by drug abuse, it does so by simulating dizziness, and bad maneuverability when the player  chooses to consume drug tokens
-          </p>
-          <Button className="w-[10rem]">Get Now</Button>
+    <>
+
+      <div className="overflow-hidden dark:bg-[#0B0B0F] home-background w-full">
+        <div className="flex w-full justify-end p-5 absolute z-10">
+          <Button onClick={clearCookies} variant={"secondary"}>Logout</Button>
+        </div>
+        <HeroParallax products={products} />
+        <div className="mx-5 flex items-center gap-20 rounded-xl mx-20 flex-col">
+          <div className="flex gap-5">
+            <Atropos className="my-atropos rounded-xl">
+              <video autoPlay muted loop className="rounded-xl h-[35rem]" >
+                <source src="/v1.mp4" type="video/mp4" className="rounded-xl h-[35rem]" />
+                Your browser does not support the video tag.
+              </video>
+            </Atropos>
+
+            <div className="flex justify-center gap-5 items-center flex-col">
+              <p className="text-2xl text-white">
+                The goal of the game is to raise awareness on the possible negative effects caused by drug abuse, it does so by simulating dizziness, and bad maneuverability when the player  chooses to consume drug tokens
+              </p>
+              {/* <Button className="w-[10rem]" variant={"secondary"}>Get Now</Button> */}
+            </div>
+          </div>
+
+          <div className="flex gap-5">
+            <div className="flex justify-center gap-5 items-center flex-col">
+              <p className="text-2xl text-white">
+                The goal of the game is to raise awareness on the possible negative effects caused by drug abuse, it does so by simulating dizziness, and bad maneuverability when the player  chooses to consume drug tokens
+              </p>
+              <div className="gap-5 flex">
+                
+              <Button className="w-[10rem]" variant={"secondary"}>Get Now </Button><br/>
+               <p className="text-white text-sm flex gap-2 items-center" ><SiMeta/> Supports Meta Quest 2 , Meta Quest 3 & Pro</p>
+              </div>
+            </div>
+            <Atropos className="my-atropos">
+              <video autoPlay muted loop className="rounded-xl">
+                <source src="/demo.mp4" type="video/mp4" className="rounded-xl" />
+                Your browser does not support the video tag.
+              </video>
+            </Atropos>
+
+          </div>
+
+        </div>
+        <div className="relative pt-[5rem]">
+
+          <MacbookScroll
+            title={
+              <span className="text-white">
+                Chat with Sarah<br />
+
+              </span>
+            }
+            badge={
+              <Link href="https://peerlist.io/manuarora">
+                <Badge className="h-10 w-10 transform -rotate-12" />
+              </Link>
+            }
+            src={`/mchat1.png`}
+            showGradient={false}
+          />
         </div>
       </div>
-      <MacbookScroll
-        title={
-          <span className="text-white">
-            Chat with our Sarah. No kidding.<br />
-
-          </span>
-        }
-        badge={
-          <Link href="https://peerlist.io/manuarora">
-            <Badge className="h-10 w-10 transform -rotate-12" />
-          </Link>
-        }
-        src={`/mchat1.png`}
-        showGradient={false}
-      />
-
-    </div>
+    </>
   );
 }
 // Peerlist logo

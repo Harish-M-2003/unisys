@@ -25,7 +25,7 @@ export async function POST(req : NextRequest){
                 const response = NextResponse.json({success : true , message : "logged in"});
 
                 response.cookies.set("unisys_token" , token , {
-                    httpOnly : true
+                    httpOnly : true,
                 })
 
                 return response;

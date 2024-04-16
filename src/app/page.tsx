@@ -21,6 +21,7 @@ import Image from 'next/image'
 import LoginForm from '@/_components/login-form'
 
 import axios from "axios";
+import NetworkStatus from '@/_components/network-status'
 
 
 export default function AuthenticationPage() {
@@ -41,7 +42,6 @@ export default function AuthenticationPage() {
 
   return (
     <>
-
       <div className="container relative  h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
 
         <div className=" backgroundDiv relative hidden h-full bg-zinc-900 flex-col bg-muted p-10 text-white dark:border-r lg:flex">

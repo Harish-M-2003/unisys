@@ -1,12 +1,12 @@
-
+"use client";
+import NetworkStatus from "@/_components/network-status";
 import SignUpForm from "@/_components/signup-form";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
 export default function AuthenticationPage() {
 
   return (
-    
+    <>
       <div className="container relative hidden h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div
           className={cn(
@@ -54,5 +54,6 @@ export default function AuthenticationPage() {
           </div>
         </div>
       </div>
+    </>
   );
 }

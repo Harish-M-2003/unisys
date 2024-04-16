@@ -81,42 +81,25 @@ export default function Chat({ profile, fallbackText, name, message, className, 
                     </Avatar>
                     }
                     <CardTitle>{name}</CardTitle>
-                    {/* {
-                        (name != "You")?
-                        <>
-                    <Button onClick={() => speak(message)}>Speak</Button>
-                    <Button onClick={() => stopSpeak()}>Stop</Button>
-                        </>
-                        :
-                        <></>
-                    } */}
+                    
                 </div>
                 <CardDescription className="text-wrap">{new Date().toDateString()}</CardDescription>
             </CardHeader>
             <CardContent className={`flex m-auto text-wrap pt-5 w-[80rem] rounded-xl ${(name === "You") ? "" : "bg-gray-100"}`}>
                 {(status === "history") ?
                     <div className="text-wrap">
-                        <span className="h-[30rem]">{message}</span>
-                    </div>
-                    :
-                    // <Typewriter
-                    //     onInit={(typewriter) => {
-                    //         typewriter.typeString(message)
-                    //             .callFunction(() => {
-                    //                 console.log('String typed out!');
-                    //             })
-                    //             .start();
-                    //     }}
-                    // />
-                    <TypeAnimation
+                        <TypeAnimation
                         sequence={[message]}
                         wrapper="span"
                         cursor={false}
                         speed={99}
                         className="w-[90rem]"
-                        style={{ fontSize: '1em', display: 'inline-block',marginRight: 20 }}
+                        style={{ whiteSpace: 'pre-line'}}
+                        // style={{ fontSize: '1em', display: 'inline-block',marginRight: 20 }}
                     />
-                    // <TypewriterEffectSmooth words = {message.split(" ").map((item , index) => ({text : item}))} className="w-[90rem] text-wrap"/>
+                    </div>
+                    :
+                    <></>
                 }
             </CardContent>
         </Card>

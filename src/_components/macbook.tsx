@@ -122,7 +122,7 @@ export const MacbookScroll = ({
       
       <div className="flex justify-center pb-10">
           <Link href={"/m-chat"}>
-                  <Button className="px-20 m-5 text-black bg-white">Chat</Button>
+                  <Button className="px-20 m-5 " variant={"outline"}>Chat</Button>
                 </Link>
           </div>
     </div>

@@ -27,7 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import Cookies from 'js-cookie'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import Link from "next/link";
 
@@ -59,6 +59,7 @@ export default function LoginForm() {
     })
 
     const router = useRouter();
+    const [erroreMessage , setErrorMessage] = useState("");
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setLoading(true);
@@ -70,10 +71,12 @@ export default function LoginForm() {
             });
 
             if (res.data.success === true){
+                //  Cookies.set("token",res.data.token)
                 localStorage.setItem("unisys_token" , res.data.token);
                 router.push("/home");
             } else {
                 setError(true);
+                setErrorMessage(res.data.message);
                 setTimeout(() => setError(false) , 3000);
             }
 
@@ -92,7 +95,7 @@ export default function LoginForm() {
             error && <Alert className="text-red-500">
                 <AlertTitle>Warning</AlertTitle>
                 <AlertDescription>
-                    Something went wrong
+                    {erroreMessage}
                 </AlertDescription>
             </Alert>
             }
